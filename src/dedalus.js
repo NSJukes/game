@@ -595,7 +595,7 @@ var Dedalus,
 		
 	    }
 	}
-	console.log("Is in: " + object + " " + (typeof object) + " => " + is_in);
+	/* console.log("Is in: " + object + " " + (typeof object) + " => " + is_in); */
 	return is_in;
     };
 
