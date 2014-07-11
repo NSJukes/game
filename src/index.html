@@ -128,9 +128,13 @@
             You have regained consciousness are in a room almost empty of weapons except for a <interact with="throwingknife">throwing knife</interact> and <interact with="bow">bow</interact> without any arrows. This reminds you of <turn to="flash1">when you got here.</turn></p>
 
             <p>Looking around with more attention, you notice a <interact with="torch">torch</interact>, a small case with a <interact with="pocketknife">pocket knife</interact> inside and an <interact with="waterbottle">water bottle</interact>. </p>
+
+</page>
 	
-   <when>!story.isInInventory('pocketknife')</when>
-	</page>
+   <when>!story.isInInventory('pocketknife' && 'throwingknife' && 'bow' && 'torch' && ' waterbottle')</when>
+	<p> You have now clear everywhere. You get bored and decide to leave the area.
+	
+</page>
 
         <page id="flash1">
 	In the distance, someone shouted:            
