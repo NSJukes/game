@@ -581,7 +581,22 @@ var Dedalus,
      * @return {Bool}          Whether the object is in the inventory
      */
     Dedalus.prototype.isInInventory = function (object) {
-        return this._story.inventory.indexOf(object) !== -1;
+	var is_in = false;
+	if (typeof object == 'string')
+	{
+	    is_in = this._story.inventory.indexOf(object) !== -1;
+	}
+	else
+	{
+	    is_in = true;
+	    for (var i = 0; i < object.length; i++)
+	    {
+		is_in = is_in && (this._story.inventory.indexOf(object[i]) !== -1);
+		
+	    }
+	}
+	console.log("Is in: " + object + " " + (typeof object) + " => " + is_in);
+	return is_in;
     };
 
     /**
