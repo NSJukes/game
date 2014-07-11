@@ -120,12 +120,12 @@
         
 	<obj id="weapons_door">
 	    <action id="Examine">
-		<when>! story.isInInventory([ 'throwingknife', 'waterbottle' ])</when>
-		The door seems locked, maybe you need something to help open it.
+		<when>! story.isInInventory([ 'throwingknife', 'bow', 'torch', 'pocketknife', 'waterbottle', 'cloth' ])</when>
+		The door seems locked, why don't you collect all the items before you open it?
 	    </action>
 	    <action id="Pick the lock">
-		<when>story.isInInventory([ 'throwingknife', 'waterbottle' ])</when>
-		You fumble with the lock and manage to raise the catch, it was hard work but the door creaks open, you can see a <turn to="weapons_corridor">long corridor</turn>.
+		<when>story.isInInventory([ 'throwingknife', 'bow', 'torch', 'pocketknife', 'waterbottle', 'cloth' ])</when>
+		You fumble with the lock and manage to raise the catch, it was hard work but the door creaks open, you leave <turn to="weapons_outside"> the building</turn>.
 	    </action>
 	</obj>
 
@@ -157,13 +157,21 @@
 	  <p>You <turn to="WeaponRoomAwakened">return to reality</turn></p>.
         </page>
         
-        <page id="weapons_corridor">
-	    You enter a long winding corridor
+        <page id="weapons_outside">
+	    You enter the outside world. You see four flags - A, B, C and D standing ouside the door. This causes another <turn to="flash2">flashback</turn></p>.
+<p> You notice there are four main area you can hide - North, South, East and West.</p> Or, of course, you can stay here.
+
         </page>
         
+	<page id="flash2">
+	"Oi, you! What's your name?"
+<p>     "Alex McCoy" you respond quickly. This is turning out to be one of the hardest weeks. The rest of Section C have been brutally murdered and signalled the country's socio-legal decline into almost barbarianism by this point. The only thing stopping pure barbarianism is these sections, which now seem to be ripping at the seams after the murder of C.
+<p>     "You're the survivor from C, aren't you? Well, I'm the Division Commander from D. You'd look at home here, be respected and  protected. Come on in to the house!" 
+<p></p>      
+<p></p>
+<p> You <turn to="weapons_outside">return to reality</turn></p>.
 
     </div>
-
     <div id="wrapper">
         <div id="title"></div>
 
@@ -180,7 +188,7 @@
     <div id="undoStageHost"></div>
 
     <div id="footer">
-        <a id="undoHost" href="#">Undo</a> &bull; <a id="saveHost" href="#">Save</a> &bull; <a id="restoreHost" href="#">Restore</a> &bull; <a id="reseteHost" href="#">Reset</a>
+        <a id="undoHost" href="#">Undo</a> &bull; <a id="saveHost" href="#">Save</a> &bull; <a id="reseteHost" href="#">Reset</a>
     </div>
 
     <script>
