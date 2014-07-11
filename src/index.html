@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="themes/nix/story.css">
 
  </head>
-var person = "Alex McCoy";
+
 <body>
     <div id="story">
 
         <initscript>
+        var person = "Alex McCoy";
         </initscript>
 
         <beforeEveryThing>
@@ -38,42 +39,106 @@ var person = "Alex McCoy";
         </afterEveryParagraphShown>
 
         <!-- Novel -->
-        <title>Empty story</title>
+        <title>Even wolves may smile</title>
 
         <!-- Objects -->
         <obj id="throwingknife" inventoryName="A throwing knife">
             <action id="Examine">
-                It's a throwing knife with a simple design, made from carbon and steel and the handle is covered in leather. It's clean, but  it comes with a cloth that has smears of blood on it. 
+                It's a <interact with="throwingknife">throwing knife</interact> with a simple design, made from carbon and steel and the handle is covered in leather. It's clean, but  it comes with a <interact with="cloth">cloth</interact> that has smears of blood on it. 
             </action>
 
-            <action id="Get">
-                <when>!story.isInInventory('dummyObject')</when>
-                Collected, stored in your belt. Finding a backpack would be more useful though ...
-                {{ story.putInInventory('dummyObject'); }}
+            <action id="Collect">
+                <when>!story.isInInventory('throwingknife')</when>
+                Collected the throwing knife, stored in your belt.
+                {{ story.putInInventory('throwingknife'); }}
+            </action>
+       </obj>
+       
+	 <obj id="bow" inventoryName="Bow">
+            <action id="Examine">
+                It's an ambidextrous <interact with="bow">bow</interact> made from black walnut and stainless steel.
+            </action>
+
+            <action id="Collect">
+                <when>!story.isInInventory('bow')</when>
+                Collected the bow.
+                {{ story.putInInventory('bow'); }}
             </action>
 
         </obj>
 
+	 <obj id="cloth" inventoryName="Cloth">
+            <action id="Examine">
+                It's a <interact with="cloth">cloth</interact> that the <interact with="throwingknife">throwing knife</interact> was on. It is made from lint-free fabric but has smears of blood on.
+            </action>
+
+            <action id="Collect">
+                <when>!story.isInInventory('cloth')</when>
+                Collected the cloth, stored in your belt.
+                {{ story.putInInventory('cloth'); }}
+            </action>
+
+        </obj>
+
+	 <obj id="torch" inventoryName="Torch">
+            <action id="Examine">
+                It's a <interact with="torch">torch</interact> with a set of batteries in.
+            </action>
+
+            <action id="Collect">
+                <when>!story.isInInventory('torch')</when>
+                Collected the torch, stored in your belt.
+                {{ story.putInInventory('torch'); }}
+            </action>
+
+        </obj>
+
+	 <obj id="pocketknife" inventoryName="Pocket Knife">
+            <action id="Examine">
+                It's a simple stainless steel <interact with="pocketknife">pocket knife</interact> in a small case.
+            </action>
+
+            <action id="Collect">
+                <when>!story.isInInventory('pocketknife')</when>
+                Collected the pocket knife, stored in your belt.
+                {{ story.putInInventory('pocketknife'); }}
+            </action>
+
+        </obj>
+	 
+	<obj id="waterbottle" inventoryName="Water Bottle">
+            <action id="Examine">
+                It's a large blue water bottle filled with water.
+            </action>
+
+            <action id="Collect">
+                <when>!story.isInInventory('waterbottle')</when>
+                Collected the water bottle.
+                {{ story.putInInventory('waterbottle'); }}
+            </action>
+
+        </obj>
+
+
         <!-- Pages -->
         <page id="intro">
-
         </page>
 
-        <page id="dummyPage" class="first">
-            You have regained consciousness are in an almost empty room except for a <interact with="throwingknife">throwing knife</interact>
+        <page id="WeaponRoomAwakened" class="first">
+            You have regained consciousness are in a room almost empty of weapons except for a <interact with="throwingknife">throwing knife</interact> and <interact with="bow">bow</interact> without any arrows. This reminds you of <turn to="flash1">when you got here.</turn></p>
 
-            <p>Quite unsurprisingly, there is even an <interact with="dummyObject">object</interact> lying around.</p>
+            <p>Looking around with more attention, you notice a <interact with="torch">torch</interact>, a small case with a <interact with="pocketknife">pocket knife</interact> inside and an <interact with="waterbottle">water bottle</interact>. </p>
+	
+   <when>!story.isInInventory('pocketknife')</when>
+	</page>
 
-            <p>Looking around with more attention, you notice <turn to="otherPage">another page</turn></p>
-
-            <paragraph id="dummyParagraph">
-                Seiously, What did you expect?
-            </paragraph>
-        </page>
-
-        <page id="otherPage">
-            Plot twist! The story ends abruptly.
-            {{ story.endGame(); }}
+        <page id="flash1">
+	In the distance, someone shouted:            
+	"Alex! Get out of the way!" 
+	Ignoring them, you went on to try and pick the only laser gun in the room. Foolish mistake. Someone creps behind you unnoticed. <p>	Suddenly the world goes dark. </p>
+<p>	</p>
+<p></p>
+	<p>You <turn to="WeaponRoomAwakened">return to reality</turn></p>.	          
         </page>
 
     </div>
@@ -82,7 +147,7 @@ var person = "Alex McCoy";
         <div id="title"></div>
 
         <div id="inventoryHostWrapper">
-            <h2>Inventory</h2>
+            <h2>Belt</h2>
             <div id="inventoryHost"></div>
         </div>
 
