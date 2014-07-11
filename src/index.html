@@ -116,7 +116,6 @@
                 Collected the water bottle.
                 {{ story.putInInventory('waterbottle'); }}
             </action>
-
         </obj>
 
 
@@ -125,25 +124,39 @@
         </page>
 
         <page id="WeaponRoomAwakened" class="first">
-            You have regained consciousness are in a room almost empty of weapons except for a <interact with="throwingknife">throwing knife</interact> and <interact with="bow">bow</interact> without any arrows. This reminds you of <turn to="flash1">when you got here.</turn></p>
-
-            <p>Looking around with more attention, you notice a <interact with="torch">torch</interact>, a small case with a <interact with="pocketknife">pocket knife</interact> inside and an <interact with="waterbottle">water bottle</interact>. </p>
-
-</page>
+        
+	    <p>
+		You have regained consciousness are in a room almost empty of weapons except for a <interact with="throwingknife">throwing knife</interact> and <interact with="bow">bow</interact> without any arrows. This reminds you of <turn to="flash1">when you got here.</turn>
+	    </p>
+            <p>
+		Looking around with more attention, you notice a <interact with="torch">torch</interact>, a small case with a <interact with="pocketknife">pocket knife</interact> inside and an <interact with="waterbottle">water bottle</interact>.
+	    </p>
+	    
+	    <p>
+		There is a large <interact with="weapons_door">heavy steel door</interact> to your left, but it seems to be locked.
+	    </p>
 	
-   <when>!story.isInInventory('pocketknife' && 'throwingknife' && 'bow' && 'torch' && ' waterbottle')</when>
-	<p> You have now clear everywhere. You get bored and decide to leave the area.
-	
-</page>
+	    <obj id="weapons_door">
+		<action id="Pick the lock">
+		    <when>! (story.isInInventory('pocketknife') && story.isInInventory('throwingknife') && story.isInInventory('bow') && story.isInInventory('torch') && story.isInInventory(' waterbottle'))</when>
+		    You fumble with the lock and manage to raise the catch, it was hard work but the door creaks open, you can see a <turn to="weapons_corridor">long corridor</turn>.
+		</action>
+	    </obj>
+	</page>
 
         <page id="flash1">
-	In the distance, someone shouted:            
-	"Alex! Get out of the way!" 
-	Ignoring them, you went on to try and pick the only laser gun in the room. Foolish mistake. Someone creps behind you unnoticed. <p>	Suddenly the world goes dark. </p>
-<p>	</p>
-<p></p>
-	<p>You <turn to="WeaponRoomAwakened">return to reality</turn></p>.	          
+	  In the distance, someone shouted:            
+	  "Alex! Get out of the way!" 
+	  Ignoring them, you went on to try and pick the only laser gun in the room. Foolish mistake. Someone creps behind you unnoticed. <p>	Suddenly the world goes dark. </p>
+	  <p></p>
+	  <p></p>
+	  <p>You <turn to="WeaponRoomAwakened">return to reality</turn></p>.
         </page>
+        
+        <page id="weapons_corridor">
+	    You enter a long winding corridor
+        </page>
+        
 
     </div>
 
