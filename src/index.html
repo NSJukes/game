@@ -17,7 +17,7 @@
     <div id="story">
 
         <initscript>
-        var person = "Alex McCoy";
+	    story.person = "Alex McCoy";
         </initscript>
 
         <beforeEveryThing>
@@ -117,7 +117,17 @@
                 {{ story.putInInventory('waterbottle'); }}
             </action>
         </obj>
-
+        
+	<obj id="weapons_door">
+	    <action id="Examine">
+		<when>! story.isInInventory([ 'throwingknife', 'waterbottle' ])</when>
+		The door seems locked, maybe you need something to help open it.
+	    </action>
+	    <action id="Pick the lock">
+		<when>story.isInInventory([ 'throwingknife', 'waterbottle' ])</when>
+		You fumble with the lock and manage to raise the catch, it was hard work but the door creaks open, you can see a <turn to="weapons_corridor">long corridor</turn>.
+	    </action>
+	</obj>
 
         <!-- Pages -->
         <page id="intro">
@@ -136,12 +146,6 @@
 		There is a large <interact with="weapons_door">heavy steel door</interact> to your left, but it seems to be locked.
 	    </p>
 	
-	    <obj id="weapons_door">
-		<action id="Pick the lock">
-		    <when>! (story.isInInventory('pocketknife') && story.isInInventory('throwingknife') && story.isInInventory('bow') && story.isInInventory('torch') && story.isInInventory(' waterbottle'))</when>
-		    You fumble with the lock and manage to raise the catch, it was hard work but the door creaks open, you can see a <turn to="weapons_corridor">long corridor</turn>.
-		</action>
-	    </obj>
 	</page>
 
         <page id="flash1">
